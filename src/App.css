@@ -799,6 +799,7 @@
   display: block;
   object-fit: cover;
   max-height: 400px;
+  image-rendering: auto;
 }
 
 .blog-hero {
