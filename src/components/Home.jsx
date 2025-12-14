@@ -14,9 +14,13 @@ const Home = () => {
             <span className="code-bracket">{"{"}</span>
           </div>
           <h1 className="hero-title">
-            <span className="code-syntax">&lt;</span>
+            <span className="code-syntax" style={{ color: "#a3e635" }}>
+              &lt;
+            </span>
             <span className="title-main">practicum.blog</span>
-            <span className="code-syntax">/&gt;</span>
+            <span className="code-syntax" style={{ color: "#a3e635" }}>
+              /&gt;
+            </span>
           </h1>
           <p className="hero-subtitle">
             // Building skills, documenting growth, one commit at a time
