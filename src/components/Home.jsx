@@ -61,7 +61,7 @@ const Home = () => {
               {"\n"}
               <span className="code-comment">
                 {" "}
-                * @description Personal Practicum Blog
+                * @description Practicum OJT Blog
               </span>
               {"\n"}
               <span className="code-comment">

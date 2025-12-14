@@ -41,6 +41,162 @@ const Blog = () => {
       id: 1,
       week: "Week 1",
       date: getWeekDateRange(1),
+      title: "CCS Practicum: Workshop Etiquette on Office and Workplace",
+      tags: ["workshop", "etiquette", "professionalism", "practicum"],
+      images: [
+        "/workshop/30-4.jpg",
+        "/workshop/30-5.jpg",
+        "/workshop/30-7.jpg",
+        "/workshop/30-12.jpg",
+        "/workshop/30-16.jpg",
+        "/workshop/30-18.jpg",
+        "/workshop/30-19.jpg",
+        "/workshop/30-20.jpg",
+        "/workshop/30-21.jpg",
+        "/workshop/30-29.jpg",
+        "/workshop/30-53.jpg",
+        "/workshop/30-71.jpg",
+        "/workshop/30-104.jpg",
+        "/workshop/30-106.jpg",
+        "/workshop/30-123.jpg",
+        "/workshop/30-124.jpg",
+        "/workshop/30-127.jpg",
+        "/workshop/30-128.jpg",
+        "/workshop/30-141.jpg",
+      ],
+      content: (
+        <pre className="code-pre">
+          <span className="code-comment">
+            // Week 1: CCS Practicum Workshop - Office & Workplace Etiquette
+          </span>
+          {"\n"}
+          {"\n"}
+          <span className="code-keyword">const</span>{" "}
+          <span className="code-variable">workshop</span>{" "}
+          <span className="code-operator">=</span>{" "}
+          <span className="code-bracket">{"{"}</span>
+          {"\n"}
+          {"  "}
+          <span className="code-variable">title</span>
+          <span className="code-operator">:</span>{" "}
+          <span className="code-string">
+            "Workshop Etiquette on Office and Workplace"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"  "}
+          <span className="code-variable">type</span>
+          <span className="code-operator">:</span>{" "}
+          <span className="code-string">"CCS Practicum Workshop"</span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"  "}
+          <span className="code-variable">topics</span>
+          <span className="code-operator">:</span>{" "}
+          <span className="code-bracket">[</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Professional communication in office settings"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Workplace dress code and appearance"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Meeting etiquette and participation"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">"Time management and punctuality"</span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Respectful interaction with colleagues and supervisors"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Email and digital communication standards"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Office space and shared resource etiquette"
+          </span>
+          {"\n"}
+          {"  "}
+          <span className="code-bracket">]</span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"  "}
+          <span className="code-variable">keyTakeaways</span>
+          <span className="code-operator">:</span>{" "}
+          <span className="code-bracket">[</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "First impressions matter in professional environments"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Understanding workplace culture and expectations"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Building professional relationships through respect"
+          </span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"    "}
+          <span className="code-string">
+            "Adapting communication style to workplace context"
+          </span>
+          {"\n"}
+          {"  "}
+          <span className="code-bracket">]</span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"  "}
+          <span className="code-variable">status</span>
+          <span className="code-operator">:</span>{" "}
+          <span className="code-string">"completed"</span>
+          <span className="code-operator">,</span>
+          {"\n"}
+          {"  "}
+          <span className="code-variable">value</span>
+          <span className="code-operator">:</span>{" "}
+          <span className="code-string">"essential_for_ojt_preparation"</span>
+          {"\n"}
+          <span className="code-bracket">{"}"}</span>
+        </pre>
+      ),
+      reflection: `This workshop provided essential guidance on professional etiquette that will be crucial 
+      for my upcoming OJT experience. The session covered various aspects of workplace behavior, from 
+      appropriate dress codes to effective communication strategies. Learning about meeting etiquette 
+      and time management practices will help me integrate smoothly into any professional environment. 
+      The emphasis on respectful interactions and understanding workplace culture resonated with me, as 
+      these soft skills are just as important as technical competencies. This workshop has prepared me 
+      to make a positive first impression and navigate professional settings with confidence during my 
+      practicum.`,
+    },
+    {
+      id: 2,
+      week: "Week 1",
+      date: getWeekDateRange(1),
       title: "OJT Application & Preparation",
       tags: ["ojt", "application", "preparation"],
       images: ["/week_1.1.jpg", "/week_1.2.jpg", "/week_1.3.jpg"],
