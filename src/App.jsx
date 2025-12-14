@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import Preparation from "./components/Preparation";
+import Timeline from "./components/Preparation";
 import Blog from "./components/Blog";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const sections = [
     { id: "home", label: "home" },
     { id: "profile", label: "profile" },
-    { id: "preparation", label: "preparation" },
+    { id: "timeline", label: "timeline" },
     { id: "blog", label: "blog" },
   ];
 
@@ -41,7 +41,7 @@ function App() {
       <main className="main-content">
         {activeSection === "home" && <Home />}
         {activeSection === "profile" && <Profile />}
-        {activeSection === "preparation" && <Preparation />}
+        {activeSection === "timeline" && <Timeline />}
         {activeSection === "blog" && <Blog />}
       </main>
 

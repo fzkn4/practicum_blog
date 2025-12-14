@@ -433,14 +433,14 @@
   color: #fff;
 }
 
-/* Timeline */
-.timeline {
+/* Profile Component Timeline Styles - Scoped to Profile only */
+.profile .timeline {
   position: relative;
   padding-left: 2rem;
   margin: 2rem 0;
 }
 
-.timeline::before {
+.profile .timeline::before {
   content: "";
   position: absolute;
   left: 0;
@@ -450,45 +450,179 @@
   background: #2a2a2a;
 }
 
-.timeline-item {
+.profile .timeline-item {
   position: relative;
   margin-bottom: 2rem;
   padding-left: 2rem;
 }
 
-.timeline-marker {
+.profile .timeline-marker {
   position: absolute;
-  left: -1.5rem;
+  left: -1.9375rem;
   top: 0.5rem;
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #82aaff;
+  background: #d2a6ff;
   border: 2px solid #0a0a0a;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
-.timeline-title {
+.profile .timeline-title {
   font-size: 1.2rem;
   color: #fff;
   margin-bottom: 0.3rem;
 }
 
-.timeline-org {
+.profile .timeline-org {
   color: #a3e635;
   font-size: 1rem;
   margin-bottom: 0.3rem;
 }
 
-.timeline-date {
+.profile .timeline-date {
   color: #888;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
 
-.timeline-desc {
+.profile .timeline-desc {
   color: #888;
   font-size: 0.9rem;
   line-height: 1.6;
+}
+
+.profile .timeline-item > .timeline-content {
+  position: relative;
+}
+
+/* Timeline Page Styles - Completely separate from Profile timeline */
+.timeline-hero {
+  padding: 2rem 0;
+}
+
+/* Override Profile timeline styles for Timeline page wrapper */
+.timeline-container {
+  position: relative;
+  padding-left: 3rem;
+  margin: 2rem 0;
+}
+
+/* Reset any inherited styles from Profile timeline */
+.timeline-container::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #2a2a2a;
+}
+
+/* Timeline page section */
+.timeline > .timeline-content {
+  padding: 2rem 0;
+}
+
+/* Timeline page items - override any general styles */
+.timeline-container .timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 0; /* Override Profile timeline padding */
+}
+
+.timeline-container .timeline-marker {
+  position: absolute;
+  left: -2.5rem;
+  top: 0.5rem;
+  z-index: 1;
+  width: auto; /* Override Profile timeline marker width */
+  height: auto; /* Override Profile timeline marker height */
+  border-radius: 0; /* Override Profile timeline marker border-radius */
+  background: transparent; /* Override Profile timeline marker background */
+  border: none; /* Override Profile timeline marker border */
+  transform: none; /* Override Profile timeline marker transform */
+}
+
+.timeline-container .timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #a3e635;
+  border: 3px solid #0a0a0a;
+  box-shadow: 0 0 0 2px #2a2a2a;
+}
+
+.timeline-container .timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+  width: 2px;
+  height: calc(100% + 1rem);
+  background: #2a2a2a;
+}
+
+.timeline-content-wrapper {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.timeline-content-wrapper:hover {
+  border-color: #3a3a3a;
+}
+
+/* Timeline page specific styles - override Profile timeline styles */
+.timeline-container .timeline-date {
+  color: #a3e635;
+  font-size: 0.9rem;
+  font-family: monospace;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.timeline-container .timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-container .timeline-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.timeline-container .timeline-title {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 0; /* Override Profile timeline title margin */
+}
+
+.timeline-container .timeline-description {
+  color: #888;
+  line-height: 1.8;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.timeline-empty {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-family: monospace;
+}
+
+.timeline-empty-text {
+  margin: 0;
+  font-size: 1rem;
 }
 
 /* Skills */
@@ -1210,6 +1344,51 @@
   .gallery-thumbnail {
     width: 60px;
     height: 60px;
+  }
+}
+
+/* Timeline Images */
+.timeline-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.timeline-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #1a1a1a;
+}
+
+.timeline-image-wrapper:hover {
+  border-color: #a3e635;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(163, 230, 53, 0.3);
+}
+
+.timeline-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.timeline-image-wrapper:hover .timeline-image {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .timeline-images {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
   }
 }
 
