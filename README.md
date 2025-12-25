@@ -1,4 +1,4 @@
-# Personal Practicum Blog
+# Personal Practicum OJT Blog
 
 A personal blog documenting my journey through the practicum OJT, starting from December 8, 2025.
 
