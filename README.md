@@ -1,6 +1,6 @@
-# Personal Practicum Blog
+# Personal Practicum OJT Blog
 
-A personal blog documenting my journey through the practicum program, starting from December 8, 2025.
+A personal blog documenting my journey through the practicum OJT, starting from December 8, 2025.
 
 ## About
 
@@ -28,4 +28,4 @@ The blog covers various aspects of the practicum experience, including:
 
 ---
 
-_This blog is maintained as part of the practicum program requirements._
+_This blog is maintained as part of the practicum OJT program requirements._
