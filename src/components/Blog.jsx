@@ -349,24 +349,260 @@ const Blog = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [galleryView]);
 
-  // Generate placeholder posts for remaining weeks (starting from week 4)
-  for (let i = 4; i <= weeksSinceStart; i++) {
-    blogPosts.push({
-      id: i,
-      week: `Week ${i}`,
-      date: getWeekDateRange(i),
-      title: `Week ${i} Update`,
-      tags: ["update", "progress"],
-      content: `// Week ${i}: Progress Update
+  blogPosts.push({
+    id: 3,
+    week: "Week 2",
+    date: "Jan 5 - Jan 10, 2026",
+    title: "Building Three Essential Systems for PICTMU",
+    tags: ["development", "systems", "pnp", "productivity"],
+    images: [
+      "/week2_1.jpg",
+      "/week2_2.jpg",
+      "/week2_3.jpg",
+      "/week2_4.jpg",
+      "/week2_5.jpg",
+      "/week2_6.jpg",
+      "/week2_7.jpg",
+      "/week2_8.jpg",
+      "/week2_9.jpg",
+      "/week2_10.jpg",
+    ],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 2: System Development at Provincial PNP - PICTMU Office
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">week2</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">location</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Provincial PNP - PICTMU Office"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">systemsDeveloped</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">name</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"e-DR System"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">description</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Electronic Delinquency Report system for actual inspections to every individual, enabling immediate on-the-spot corrections of misdemeanors or minor infractions committed by PNP personnel without need for full blown hearing or summary proceedings"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">features</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Electronic incident logging during inspections"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Immediate correction documentation"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Minor infraction tracking"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Eliminates need for formal hearings"
+        </span>
+        {"\n"}
+        {"      "}
+        <span className="code-bracket">]</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"}"}</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">name</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Gate Security System"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">description</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Automated entrance gate system at PNP entrance that opens and closes via QR code given to registered PNP personnel"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">features</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "QR code-based access control"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Automated gate operation"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Personnel registration system"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Enhanced security verification"
+        </span>
+        {"\n"}
+        {"      "}
+        <span className="code-bracket">]</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"}"}</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">name</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Intern Attendance System"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">description</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Transparent attendance system tracking the duty hours of interns"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">features</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Transparent hour tracking"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Duty hour monitoring"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Accurate time recording"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"        "}
+        <span className="code-string">
+          "Clear attendance documentation"
+        </span>
+        {"\n"}
+        {"      "}
+        <span className="code-bracket">]</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"}"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">techStack</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Web development"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Database management"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"UI/UX design"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Security implementation"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">impact</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Streamlined operations, improved security, enhanced efficiency"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">status</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"80-90% complete"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This week focused on developing three critical systems for the Provincial PNP - PICTMU office, all now 80-90% complete.
 
-const week${i} = {
-  status: "in_progress",
-  focus: "Continuing practicum work",
-  updates: "To be documented..."
-}`,
-      reflection: `This week's reflection will be updated as the practicum progresses.`,
-    });
-  }
+      The e-DR system enables electronic documentation of minor infractions during inspections, allowing immediate on-the-spot corrections 
+      without formal proceedings. The gate security system automates entrance access via QR codes for registered PNP personnel, replacing 
+      manual security checks with efficient automated control. The intern attendance system provides transparent duty hour tracking, ensuring 
+      accurate time-in/time-out documentation for supervisors and interns.
+
+      These projects provided hands-on experience with full-stack development, database design, and security implementation. 
+      I learned to create user-friendly interfaces with robust backends while addressing real-world public service requirements.`,
+  });
 
   return (
     <div className="blog">
