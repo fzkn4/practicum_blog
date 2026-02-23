@@ -352,7 +352,7 @@ const Blog = () => {
   blogPosts.push({
     id: 3,
     week: "Week 2",
-    date: "Jan 5 - Jan 10, 2026",
+    date: "Jan 5 - Jan 9, 2026",
     title: "Building Three Essential Systems for PICTMU",
     tags: ["development", "systems", "pnp", "productivity"],
     images: [
