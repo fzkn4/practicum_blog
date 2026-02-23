@@ -604,6 +604,97 @@ const Blog = () => {
       I learned to create user-friendly interfaces with robust backends while addressing real-world public service requirements.`,
   });
 
+  blogPosts.push({
+    id: 4,
+    week: "Week 3",
+    date: "Jan 12 - Jan 16, 2026",
+    title: "Proposal for a Centralized e-document system",
+    tags: ["proposal", "e-document", "automation", "workflow"],
+    images: ["/week3_1.png", "/week3_2.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 3: e-document System Proposal - Centralizing Document Flow
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">eDocumentSystem</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">objective</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Centralize flow and process of documents"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">problemSolved</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Eliminates personal travel between departments for approvals/edits"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">workflow</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Digital document submission"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Inter-departmental digital routing"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Real-time editing and feedback"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Final approval by Provincial Director/Head Officer"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">benefits</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Seamless processes"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Time efficiency"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Audit trails"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Reduced paper waste"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This week was dedicated to proposing the e-document system, a significant step towards digitizing the administrative 
+      workflow. The core idea is to centralize the entire document lifecycle—from creation to final approval—within a single digital platform. 
+      By doing so, we aim to eliminate the need for personnel to manually carry physical documents between departments for signatures and revisions.
+
+      The system will allow departments to collaborate on documents in real-time, providing feedback and making edits digitally. 
+      The final approval step is reserved for the Provincial Director or head officer, ensuring that the process remains secure and formal 
+      while significantly reducing the turnaround time. This project highlights the importance of process automation in improving 
+      organizational efficiency and transparency.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
