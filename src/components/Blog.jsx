@@ -1182,6 +1182,81 @@ const Blog = () => {
       some fun here, and we're grateful for the experience.`,
   });
 
+  blogPosts.push({
+    id: 12,
+    week: "Turnover",
+    date: "Mar 23, 2026",
+    title: "System Turnover Ceremony",
+    tags: ["turnover", "ceremony", "systems", "zsppo", "milestone"],
+    images: [
+      "/turnover_1.jpg",
+      "/turnover_2.jpg",
+      "/turnover_3.jpg",
+      "/turnover_4.jpg",
+      "/turnover_5.jpg",
+      "/turnover_6.jpg",
+      "/turnover_7.jpg",
+    ],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Official System Turnover Ceremony
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">systemTurnover</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">systems</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Gate Security System"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"E-Document System"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"FitWatch"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"E-DR System"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">recipient</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"ZSPPO"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">status</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"officially_turned_over"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This was the official turnover ceremony of the 4 systems that we 
+      developed for the ZSPPO during our OJT: the Gate Security System, 
+      E-Document System, FitWatch, and E-DR System. It was a proud moment 
+      seeing the fruits of our hard work formally handed over and accepted 
+      by the personnel. This ceremony marked the culmination of weeks of 
+      development, testing, and refinement. We're grateful for the 
+      opportunity to have contributed tangible tools that will serve the 
+      ZSPPO moving forward.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
@@ -1299,6 +1374,37 @@ const Blog = () => {
               </div>
             );
           })}
+
+          {/* ===== Finish Line ===== */}
+          <div className="finish-line">
+            <div className="finish-line-track">
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+            </div>
+            <div className="finish-badge">
+              <span className="finish-icon" aria-hidden="true">🏆</span>
+              <span className="finish-text">QUEST COMPLETE</span>
+              <span className="finish-sub">
+                // return &quot;Mission Accomplished&quot;;
+              </span>
+            </div>
+            <div className="finish-line-track">
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+              <div className="finish-checker" />
+            </div>
+          </div>
         </div>
       </section>
 
