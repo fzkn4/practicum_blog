@@ -695,6 +695,67 @@ const Blog = () => {
       organizational efficiency and transparency.`,
   });
 
+  blogPosts.push({
+    id: 5,
+    week: "Week 4",
+    date: "Jan 19 - Jan 23, 2026",
+    title: "Technical Support and Continued Development",
+    tags: ["troubleshooting", "systems", "development", "pnp"],
+    images: ["/week4_1.jpg", "/week4_2.jpg", "/week4_3.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 4: Technical Troubleshooting and System Development
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">week4</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">activities</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Troubleshooting PNP personnel's laptop"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Continued system development"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Feature refinement for current projects"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">focus</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Maintenance and Progress"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">status</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"ongoing"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This week was a mix of hands-on technical support and focused development. 
+      I assisted a PNP personnel with troubleshooting their laptop, which provided 
+      a practical look at the hardware and software issues encountered in the office. 
+      The rest of the week was dedicated to continuing the development of our systems, 
+      ensuring that we stay on track with our project goals and refine the features 
+      based on the needs we've identified so far.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
