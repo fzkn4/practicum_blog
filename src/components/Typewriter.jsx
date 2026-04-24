@@ -6,6 +6,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
  */
 const Typewriter = ({ 
   children, 
+  words = [], // New prop for cycling through multiple words
   typingSpeed = 50, 
   deletingSpeed = 30, 
   pauseDuration = 2000,
@@ -14,11 +15,15 @@ const Typewriter = ({
   loop = true 
 }) => {
   const [visibleCount, setVisibleCount] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
   const [phase, setPhase] = useState("WAITING"); // WAITING, TYPING, PAUSING_END, DELETING, PAUSING_START
   const timerRef = useRef(null);
 
-  // Flatten children to extract all text content
+  // Determine current full text
   const fullTextContent = useMemo(() => {
+    if (words && words.length > 0) {
+      return words[wordIndex];
+    }
     const getText = (node) => {
       if (typeof node === "string") return node;
       if (typeof node === "number") return node.toString();
@@ -27,9 +32,17 @@ const Typewriter = ({
       return "";
     };
     return getText(children);
-  }, [children]);
+  }, [children, words, wordIndex]);
 
   const totalLength = fullTextContent.length;
+
+  // Reset counters when wordIndex changes (only for words mode)
+  useEffect(() => {
+    if (words && words.length > 0) {
+      setVisibleCount(0);
+      setPhase("TYPING");
+    }
+  }, [wordIndex, words.length]);
 
   // Handle Initial Delay
   useEffect(() => {
@@ -49,10 +62,10 @@ const Typewriter = ({
           setVisibleCount((prev) => prev + 1);
         }, typingSpeed);
       } else {
-        if (loop) {
+        if (loop || (words && words.length > 0)) {
           timerRef.current = setTimeout(() => {
             setPhase("PAUSING_END");
-          }, 100); // small buffer
+          }, 100);
         }
       }
     } else if (phase === "PAUSING_END") {
@@ -65,16 +78,21 @@ const Typewriter = ({
           setVisibleCount((prev) => prev - 1);
         }, deletingSpeed);
       } else {
-        setPhase("PAUSING_START");
+        if (words && words.length > 0) {
+          setWordIndex((prev) => (prev + 1) % words.length);
+          // phase will be reset by the effect watching wordIndex
+        } else {
+          setPhase("PAUSING_START");
+        }
       }
     } else if (phase === "PAUSING_START") {
       timerRef.current = setTimeout(() => {
         setPhase("TYPING");
-      }, 500); // short pause before re-typing
+      }, 500);
     }
 
     return () => clearTimeout(timerRef.current);
-  }, [phase, visibleCount, totalLength, typingSpeed, deletingSpeed, pauseDuration, loop]);
+  }, [phase, visibleCount, totalLength, typingSpeed, deletingSpeed, pauseDuration, loop, words, wordIndex]);
 
   // Recursively render children but cap the text content at visibleCount
   const renderChildren = (node, state) => {
@@ -98,7 +116,6 @@ const Typewriter = ({
 
     if (React.isValidElement(node)) {
       const prunedChildren = renderChildren(node.props.children, state);
-      // We keep the element structure to maintain styles during the typing effect
       return React.cloneElement(node, {}, prunedChildren);
     }
 
@@ -109,7 +126,11 @@ const Typewriter = ({
 
   return (
     <span className="typewriter-wrapper">
-      {renderChildren(children, state)}
+      {words && words.length > 0 ? (
+        fullTextContent.slice(0, visibleCount)
+      ) : (
+        renderChildren(children, state)
+      )}
       <span 
         className="typewriter-cursor"
         aria-hidden="true"

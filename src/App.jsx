@@ -6,6 +6,7 @@ import Timeline from "./components/Preparation";
 import Blog from "./components/Blog";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import Typewriter from "./components/Typewriter";
 
 function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -23,7 +24,10 @@ function App() {
         <nav className="nav">
           <div className="nav-brand">
             <span className="code-syntax">&lt;</span>
-            <span className="brand-name">practicum.blog</span>
+            <span className="brand-name">
+              practicum.blog
+              <Typewriter />
+            </span>
             <span className="code-syntax">/&gt;</span>
           </div>
           <div className="nav-links">
