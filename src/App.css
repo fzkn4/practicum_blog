@@ -1008,89 +1008,394 @@
   margin-top: 2rem;
 }
 
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
+/* ===== Game Level Timeline ===== */
 
-.post-card {
+/* Progress bar at top */
+.level-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 3rem;
+  padding: 1.25rem 1.5rem;
   background: var(--bg-secondary);
-  border: 1px solid var(--border-secondary);
+  border: 2px solid var(--border-secondary);
   border-radius: 8px;
-  padding: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.post-card:hover {
-  border-color: var(--bg-hover);
-  transform: translateY(-2px);
+.progress-segment {
+  flex: 1;
+  height: 12px;
+  background: var(--accent-color);
+  position: relative;
+  transition: background-color 0.3s ease;
 }
 
-.post-card.expanded {
-  grid-column: 1 / -1;
+.progress-segment:first-child {
+  border-radius: 4px 0 0 4px;
 }
 
-.post-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  gap: 1rem;
+.progress-segment:last-child {
+  border-radius: 0 4px 4px 0;
 }
 
-.post-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+.progress-segment::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: inherit;
 }
 
-.post-week {
-  font-size: 1.1rem;
-  color: var(--text-primary);
+.progress-label {
+  font-size: 0.8rem;
+  color: var(--accent-color);
   font-weight: bold;
+  white-space: nowrap;
+  margin-left: 0.75rem;
+  letter-spacing: 0.05em;
   transition: color 0.3s ease;
 }
 
-.post-date {
+/* Timeline container */
+.blog-timeline {
+  position: relative;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+/* Vertical center line */
+.blog-timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--border-secondary) 0px,
+    var(--border-secondary) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  transform: translateX(-50%);
+  transition: background 0.3s ease;
+}
+
+/* Each level row */
+.level-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  min-height: 60px;
+}
+
+.level-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Alternating layout */
+.level-row--left {
+  flex-direction: row;
+}
+
+.level-row--right {
+  flex-direction: row-reverse;
+}
+
+/* The card half */
+.level-card-area {
+  width: calc(50% - 40px);
+  padding: 0 1rem;
+}
+
+/* The center node */
+.level-node-area {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+/* Pixel node circle */
+.level-node {
+  width: 52px;
+  height: 52px;
+  background: var(--bg-primary);
+  border: 3px solid var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  /* pixel corners via clip-path */
+  clip-path: polygon(
+    4px 0%, calc(100% - 4px) 0%,
+    100% 4px, 100% calc(100% - 4px),
+    calc(100% - 4px) 100%, 4px 100%,
+    0% calc(100% - 4px), 0% 4px
+  );
+}
+
+.level-node:hover {
+  background: var(--accent-rgba-10);
+  border-color: var(--accent-hover);
+  transform: scale(1.1);
+}
+
+.level-node:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+.level-node.active {
+  background: var(--accent-rgba-20);
+  border-color: var(--accent-color);
+  box-shadow:
+    0 0 12px var(--shadow-accent),
+    inset 0 0 8px var(--accent-rgba-10);
+}
+
+.level-number {
   font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  font-family: "Courier New", monospace;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+/* Cleared badge under node */
+.level-status {
+  margin-top: 6px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: "Courier New", monospace;
+  opacity: 0.8;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Connector line from node to card */
+.level-connector {
+  position: absolute;
+  top: 26px;
+  height: 2px;
+  background: var(--accent-rgba-30);
+  transition: background-color 0.3s ease;
+}
+
+.level-row--left .level-connector {
+  left: calc(50% + 40px);
+  right: calc(50% + 40px);
+  width: calc(50% - 80px + 1rem);
+  left: auto;
+  right: auto;
+}
+
+.level-row--right .level-connector {
+  width: calc(50% - 80px + 1rem);
+}
+
+/* The actual post card */
+.level-card {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-secondary);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  animation: levelCardAppear 0.4s ease-out;
+}
+
+@keyframes levelCardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.level-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px 8px 0 0;
+}
+
+.level-row--right .level-card::before {
+  background: linear-gradient(270deg, var(--accent-color), transparent);
+}
+
+.level-card:hover {
+  border-color: var(--accent-rgba-30);
+  transform: translateY(-2px);
+}
+
+.level-card:hover::before {
+  opacity: 1;
+}
+
+.level-card.expanded {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 24px var(--accent-rgba-10);
+}
+
+.level-card.expanded::before {
+  opacity: 1;
+}
+
+/* Card header */
+.level-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.level-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.level-card-week {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.level-card-date {
+  font-size: 0.75rem;
   color: var(--text-tertiary);
   transition: color 0.3s ease;
 }
 
+/* Tags row */
 .post-tags {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   flex-wrap: wrap;
 }
 
 .post-tag {
   background: var(--accent-rgba-20);
   color: var(--accent-color);
-  padding: 0.3rem 0.6rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.post-title {
-  font-size: 1.5rem;
+/* Title */
+.level-card-title {
+  font-size: 1.15rem;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
   transition: color 0.3s ease;
 }
 
-.post-preview {
+/* Preview hint */
+.level-card-preview {
   color: var(--text-tertiary);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
   transition: color 0.3s ease;
 }
 
+/* Expanded content inside card */
 .post-expanded {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+/* ===== Mobile: stack to single column ===== */
+@media (max-width: 900px) {
+  .blog-timeline::before {
+    left: 28px;
+  }
+
+  .level-row,
+  .level-row--left,
+  .level-row--right {
+    flex-direction: row !important;
+  }
+
+  .level-node-area {
+    width: 56px;
+    flex-shrink: 0;
+  }
+
+  .level-node {
+    width: 44px;
+    height: 44px;
+  }
+
+  .level-card-area {
+    width: calc(100% - 56px);
+    padding: 0 0 0 0.75rem;
+  }
+
+  .level-connector {
+    display: none;
+  }
+
+  .level-card-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .level-progress {
+    padding: 0.75rem 1rem;
+  }
+
+  .progress-segment {
+    height: 8px;
+  }
+
+  .level-node {
+    width: 38px;
+    height: 38px;
+  }
+
+  .level-number {
+    font-size: 0.75rem;
+  }
+
+  .level-card {
+    padding: 1rem;
+  }
+
+  .level-card-title {
+    font-size: 0.95rem;
+  }
 }
 
 .post-images {
@@ -1223,6 +1528,176 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ===== Post Detail Modal ===== */
+.post-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.25s ease;
+  backdrop-filter: blur(6px);
+  padding: 2rem;
+}
+
+.post-modal {
+  background: var(--bg-primary);
+  border: 2px solid var(--border-secondary);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  animation: postModalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@keyframes postModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Scrollbar inside modal */
+.post-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.post-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.post-modal::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+
+/* Close button */
+.post-modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-family: monospace;
+  line-height: 1;
+  z-index: 1;
+  margin-left: auto;
+  margin-bottom: -40px;
+}
+
+.post-modal-close:hover {
+  background: var(--accent-rgba-20);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+.post-modal-close:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Header */
+.post-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-right: 48px;
+}
+
+.post-modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.post-modal-badge {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.05em;
+  clip-path: polygon(
+    3px 0%, calc(100% - 3px) 0%,
+    100% 3px, 100% calc(100% - 3px),
+    calc(100% - 3px) 100%, 3px 100%,
+    0% calc(100% - 3px), 0% 3px
+  );
+}
+
+.post-modal-week {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.post-modal-date {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  transition: color 0.3s ease;
+}
+
+/* Title */
+.post-modal-title {
+  font-size: 1.75rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+/* Modal responsive */
+@media (max-width: 768px) {
+  .post-modal-overlay {
+    padding: 1rem;
+    align-items: flex-end;
+  }
+
+  .post-modal {
+    max-height: 90vh;
+    padding: 1.5rem;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .post-modal-title {
+    font-size: 1.35rem;
+  }
+
+  .post-modal-header {
+    padding-right: 0;
   }
 }
 

@@ -319,35 +319,51 @@ const Blog = () => {
     },
   ];
 
-  // Keyboard navigation for gallery
+  // Keyboard navigation for gallery + post modal
   useEffect(() => {
-    if (!galleryView.open) return;
-
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        setGalleryView({ ...galleryView, open: false });
-      } else if (e.key === "ArrowLeft") {
-        setGalleryView({
-          ...galleryView,
-          currentIndex:
-            galleryView.currentIndex > 0
-              ? galleryView.currentIndex - 1
-              : galleryView.images.length - 1,
-        });
-      } else if (e.key === "ArrowRight") {
-        setGalleryView({
-          ...galleryView,
-          currentIndex:
-            galleryView.currentIndex < galleryView.images.length - 1
-              ? galleryView.currentIndex + 1
-              : 0,
-        });
+        if (galleryView.open) {
+          setGalleryView({ ...galleryView, open: false });
+        } else if (selectedPost) {
+          setSelectedPost(null);
+        }
+      } else if (galleryView.open) {
+        if (e.key === "ArrowLeft") {
+          setGalleryView({
+            ...galleryView,
+            currentIndex:
+              galleryView.currentIndex > 0
+                ? galleryView.currentIndex - 1
+                : galleryView.images.length - 1,
+          });
+        } else if (e.key === "ArrowRight") {
+          setGalleryView({
+            ...galleryView,
+            currentIndex:
+              galleryView.currentIndex < galleryView.images.length - 1
+                ? galleryView.currentIndex + 1
+                : 0,
+          });
+        }
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [galleryView]);
+  }, [galleryView, selectedPost]);
+
+  // Lock body scroll when post modal or gallery is open
+  useEffect(() => {
+    if (selectedPost || galleryView.open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedPost, galleryView.open]);
 
   blogPosts.push({
     id: 3,
@@ -1187,148 +1203,257 @@ const Blog = () => {
         </p>
         <div className="blog-stats">
           <div className="stat-item">
-            <span className="stat-value">{weeksSinceStart}</span>
+            <span className="stat-value">10</span>
             <span className="stat-label">weeks</span>
           </div>
           <div className="stat-item">
             <span className="stat-value">{blogPosts.length}</span>
             <span className="stat-label">posts</span>
           </div>
+          <div className="stat-item">
+            <span className="stat-value">Done</span>
+            <span className="stat-label">status</span>
+          </div>
         </div>
       </section>
 
       <section className="blog-content">
-        <div className="posts-grid">
-          {blogPosts.map((post) => (
-            <div
-              key={post.id}
-              className={`post-card ${
-                selectedPost?.id === post.id ? "expanded" : ""
-              }`}
-              onClick={() =>
-                setSelectedPost(selectedPost?.id === post.id ? null : post)
-              }
-            >
-              <div className="post-header">
-                <div className="post-meta">
-                  <span className="post-week">{post.week}</span>
-                  <span className="post-date">{post.date}</span>
-                </div>
-                <div className="post-tags">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="post-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <h2 className="post-title">{post.title}</h2>
-              {selectedPost?.id === post.id ? (
-                <div className="post-expanded">
-                  {post.images && post.images.length > 0 && (
-                    <div className="post-images">
-                      {(showAllImages[post.id]
-                        ? post.images
-                        : post.images.slice(0, 3)
-                      ).map((image, index) => (
-                        <div
-                          key={index}
-                          className="post-image-wrapper"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setGalleryView({
-                              open: true,
-                              images: post.images,
-                              currentIndex: index,
-                            });
-                          }}
-                        >
-                          <img
-                            src={image}
-                            alt={`${post.title} - Image ${index + 1}`}
-                            className="post-image"
-                          />
-                          <div className="image-overlay">
-                            <span className="image-number">
-                              {index + 1} / {post.images.length}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                      {post.images.length > 3 && !showAllImages[post.id] && (
-                        <div
-                          className="see-more-images"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setShowAllImages({
-                              ...showAllImages,
-                              [post.id]: true,
-                            });
-                          }}
-                        >
-                          <span className="see-more-text">
-                            +{post.images.length - 3} more
-                          </span>
-                          <span className="see-more-hint">
-                            // Click to view all
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  <div className="post-code">
-                    {typeof post.content === "string" ? (
-                      <pre className="code-pre">{post.content}</pre>
-                    ) : (
-                      post.content
-                    )}
-                  </div>
-                  <div className="post-reflection">
-                    <h3 className="reflection-title">// Reflection</h3>
-                    <p className="reflection-text">{post.reflection}</p>
-                  </div>
-                </div>
-              ) : (
-                <p className="post-preview">// Click to read full post...</p>
-              )}
-            </div>
+        {/* Progress Bar */}
+        <div className="level-progress" aria-label="OJT progress: 10 of 10 levels completed">
+          {Array.from({ length: 10 }, (_, i) => (
+            <div key={i} className="progress-segment" />
           ))}
+          <span className="progress-label">10/10</span>
+        </div>
+
+        {/* Timeline */}
+        <div className="blog-timeline">
+          {blogPosts.map((post, index) => {
+            const isLeft = index % 2 === 0;
+            const levelNum = String(index + 1).padStart(2, "0");
+
+            return (
+              <div
+                key={post.id}
+                className={`level-row ${isLeft ? "level-row--left" : "level-row--right"}`}
+              >
+                {/* Card area */}
+                <div className="level-card-area">
+                  <div
+                    className="level-card"
+                    onClick={() => setSelectedPost(post)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Level ${levelNum}: ${post.title}`}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedPost(post);
+                      }
+                    }}
+                  >
+                    <div className="level-card-header">
+                      <div className="level-card-meta">
+                        <span className="level-card-week">{post.week}</span>
+                        <span className="level-card-date">{post.date}</span>
+                      </div>
+                      <div className="post-tags">
+                        {post.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className="post-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <h2 className="level-card-title">{post.title}</h2>
+                    <p className="level-card-preview">
+                      // Click to view details...
+                    </p>
+                  </div>
+                </div>
+
+                {/* Center node */}
+                <div className="level-node-area">
+                  <div
+                    className={`level-node ${selectedPost?.id === post.id ? "active" : ""}`}
+                    onClick={() => setSelectedPost(post)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Open level ${levelNum}`}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedPost(post);
+                      }
+                    }}
+                  >
+                    <span className="level-number">{levelNum}</span>
+                  </div>
+                  <span className="level-status" aria-hidden="true">
+                    clear
+                  </span>
+                </div>
+
+                {/* Empty spacer for the other side */}
+                <div className="level-card-area" />
+              </div>
+            );
+          })}
         </div>
       </section>
 
       <section className="blog-footer">
         <div className="code-block-large">
           <pre className="code-pre">
-            <span className="code-comment">// More posts coming soon...</span>
+            <span className="code-comment">// OJT Journey completed successfully</span>
             {"\n"}
             <span className="code-keyword">const</span>{" "}
-            <span className="code-variable">upcomingPosts</span>{" "}
+            <span className="code-variable">ojtExperience</span>{" "}
             <span className="code-operator">=</span>{" "}
             <span className="code-bracket">{"{"}</span>
             {"\n"}
             {"  "}
             <span className="code-variable">status</span>
             <span className="code-operator">:</span>{" "}
-            <span className="code-string">"in_progress"</span>
+            <span className="code-string">"completed"</span>
             <span className="code-operator">,</span>
             {"\n"}
             {"  "}
-            <span className="code-variable">frequency</span>
+            <span className="code-variable">totalWeeks</span>
             <span className="code-operator">:</span>{" "}
-            <span className="code-string">"weekly"</span>
+            <span className="code-string">"10 Weeks"</span>
             <span className="code-operator">,</span>
             {"\n"}
             {"  "}
-            <span className="code-variable">nextUpdate</span>
+            <span className="code-variable">location</span>
             <span className="code-operator">:</span>{" "}
-            <span className="code-string">"As practicum progresses"</span>
+            <span className="code-string">"ZSPPO - PICTMU"</span>
+            <span className="code-operator">,</span>
+            {"\n"}
+            {"  "}
+            <span className="code-variable">outcome</span>
+            <span className="code-operator">:</span>{" "}
+            <span className="code-string">"Mission Accomplished"</span>
             {"\n"}
             <span className="code-bracket">{"}"}</span>
           </pre>
         </div>
       </section>
 
-      {/* Image Gallery Modal */}
+      {/* ===== Post Detail Modal ===== */}
+      {selectedPost && (
+        <div
+          className="post-modal-overlay"
+          onClick={() => setSelectedPost(null)}
+        >
+          <div
+            className="post-modal"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedPost.title}
+          >
+            <button
+              className="post-modal-close"
+              onClick={() => setSelectedPost(null)}
+              aria-label="Close post"
+            >
+              ×
+            </button>
+
+            <div className="post-modal-header">
+              <div className="post-modal-meta">
+                <span className="post-modal-badge">
+                  LVL{" "}
+                  {String(
+                    blogPosts.findIndex((p) => p.id === selectedPost.id) + 1
+                  ).padStart(2, "0")}
+                </span>
+                <span className="post-modal-week">{selectedPost.week}</span>
+                <span className="post-modal-date">{selectedPost.date}</span>
+              </div>
+              <div className="post-tags">
+                {selectedPost.tags.map((tag) => (
+                  <span key={tag} className="post-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <h2 className="post-modal-title">{selectedPost.title}</h2>
+
+            {/* Images */}
+            {selectedPost.images && selectedPost.images.length > 0 && (
+              <div className="post-images">
+                {(showAllImages[selectedPost.id]
+                  ? selectedPost.images
+                  : selectedPost.images.slice(0, 3)
+                ).map((image, imgIndex) => (
+                  <div
+                    key={imgIndex}
+                    className="post-image-wrapper"
+                    onClick={() => {
+                      setGalleryView({
+                        open: true,
+                        images: selectedPost.images,
+                        currentIndex: imgIndex,
+                      });
+                    }}
+                  >
+                    <img
+                      src={image}
+                      alt={`${selectedPost.title} - Image ${imgIndex + 1}`}
+                      className="post-image"
+                    />
+                    <div className="image-overlay">
+                      <span className="image-number">
+                        {imgIndex + 1} / {selectedPost.images.length}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+                {selectedPost.images.length > 3 &&
+                  !showAllImages[selectedPost.id] && (
+                    <div
+                      className="see-more-images"
+                      onClick={() => {
+                        setShowAllImages({
+                          ...showAllImages,
+                          [selectedPost.id]: true,
+                        });
+                      }}
+                    >
+                      <span className="see-more-text">
+                        +{selectedPost.images.length - 3} more
+                      </span>
+                      <span className="see-more-hint">
+                        // Click to view all
+                      </span>
+                    </div>
+                  )}
+              </div>
+            )}
+
+            {/* Code content */}
+            <div className="post-code">
+              {typeof selectedPost.content === "string" ? (
+                <pre className="code-pre">{selectedPost.content}</pre>
+              ) : (
+                selectedPost.content
+              )}
+            </div>
+
+            {/* Reflection */}
+            <div className="post-reflection">
+              <h3 className="reflection-title">// Reflection</h3>
+              <p className="reflection-text">{selectedPost.reflection}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ===== Image Gallery Modal ===== */}
       {galleryView.open && (
         <div
           className="gallery-modal"
