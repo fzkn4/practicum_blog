@@ -1032,6 +1032,77 @@ const Blog = () => {
       of steady progress and focused implementation.`,
   });
 
+  blogPosts.push({
+    id: 10,
+    week: "Week 9",
+    date: "Feb 23 - Feb 27, 2026",
+    title: "System Presentation and Community Building",
+    tags: ["presentation", "demo", "feedback", "pnp", "community"],
+    images: [
+      "/week9_1.jpg",
+      "/week9_2.jpg",
+      "/week9_3.jpg",
+      "/week9_4.jpg",
+      "/week9_5.jpg",
+    ],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 9: System Demo, Feedback, and PICTMU Celebration
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">week9</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">milestones</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Full functional system demo"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Gathered user feedback for refinement"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Participation in spiritual fellowship"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">celebration</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Lunch with PICTMU staff"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">status</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"successful_presentation"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `Week 9 was incredibly eventful and rewarding. We reached a major 
+      milestone by finally presenting and demonstrating our fully functional 
+      systems to the PNP personnel. This session was crucial for gathering 
+      direct feedback, allowing us to further tailor the systems to their 
+      specific needs and preferences. Beyond technical work, we had the 
+      opportunity to participate in a Bible meeting with a PNP pastor, 
+      fostering a deeper connection with the community. We capped off the 
+      week with a celebration lunch together with the PICTMU staff, 
+      marking the success of our presentation and the hard work we've 
+      put in so far.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
