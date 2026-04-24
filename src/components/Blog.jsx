@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Typewriter from "./Typewriter";
 
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
@@ -1268,10 +1269,12 @@ const Blog = () => {
           <span className="section-label">// blog</span>
         </div>
         <h1 className="page-title">
-          <span className="code-keyword">export</span>{" "}
-          <span className="code-keyword">const</span>{" "}
-          <span className="code-variable">blogPosts</span> ={" "}
-          <span className="code-bracket">[</span>
+          <Typewriter>
+            <span className="code-keyword">export</span>{" "}
+            <span className="code-keyword">const</span>{" "}
+            <span className="code-variable">blogPosts</span> ={" "}
+            <span className="code-bracket">[</span>
+          </Typewriter>
         </h1>
         <p className="page-subtitle">
           // Weekly reflections and learnings from the practicum

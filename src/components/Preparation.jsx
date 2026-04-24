@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Icon from "./Icon";
+import Typewriter from "./Typewriter";
 
 const Timeline = () => {
   const [galleryView, setGalleryView] = useState({
@@ -58,10 +59,12 @@ const Timeline = () => {
           <span className="section-label">// timeline</span>
         </div>
         <h1 className="page-title">
-          <span className="code-keyword">const</span>{" "}
-          <span className="code-function">timeline</span>{" "}
-          <span className="code-operator">=</span>{" "}
-          <span className="code-bracket">[</span>
+          <Typewriter>
+            <span className="code-keyword">const</span>{" "}
+            <span className="code-function">timeline</span>{" "}
+            <span className="code-operator">=</span>{" "}
+            <span className="code-bracket">[</span>
+          </Typewriter>
         </h1>
         <p className="page-subtitle">
           // A chronological journey through events

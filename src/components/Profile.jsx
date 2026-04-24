@@ -1,4 +1,5 @@
 import React from "react";
+import Typewriter from "./Typewriter";
 
 const Profile = () => {
   return (
@@ -17,7 +18,9 @@ const Profile = () => {
             />
           </div>
           <div className="profile-info">
-            <h1 className="profile-name">Jhon Anthony B. Tomogsok</h1>
+            <h1 className="profile-name">
+              <Typewriter typingSpeed={70}>Jhon Anthony B. Tomogsok</Typewriter>
+            </h1>
             <p className="profile-title">
               // Fourth-Year B.S. Computer Science Student
             </p>
