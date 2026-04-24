@@ -42,10 +42,10 @@ function App() {
         </nav>
 
         <main className="main-content">
-          {activeSection === "home" && <Home />}
-          {activeSection === "profile" && <Profile />}
-          {activeSection === "timeline" && <Timeline />}
-          {activeSection === "blog" && <Blog />}
+          {activeSection === "home" && <Home onNavigate={setActiveSection} />}
+          {activeSection === "profile" && <Profile onNavigate={setActiveSection} />}
+          {activeSection === "timeline" && <Timeline onNavigate={setActiveSection} />}
+          {activeSection === "blog" && <Blog onNavigate={setActiveSection} />}
         </main>
 
         <footer className="footer">

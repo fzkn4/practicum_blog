@@ -320,11 +320,14 @@
   border-radius: 8px;
   padding: 2rem;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .feature-card:hover {
-  border-color: var(--bg-hover);
-  transform: translateY(-4px);
+  border-color: var(--accent-color);
+  transform: translateY(-8px);
+  background: var(--bg-tertiary);
+  box-shadow: 0 10px 20px var(--shadow-color);
 }
 
 .feature-icon {

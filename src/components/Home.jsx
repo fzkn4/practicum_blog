@@ -2,7 +2,12 @@ import React from "react";
 import Icon from "./Icon";
 import Typewriter from "./Typewriter";
 
-const Home = () => {
+const Home = ({ onNavigate }) => {
+  const navigateTo = (section) => {
+    onNavigate(section);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="home">
       <section className="hero">
@@ -14,7 +19,7 @@ const Home = () => {
             <span className="code-operator">()</span> {"=>"}{" "}
             <span className="code-bracket">{"{"}</span>
           </div>
-            <h1 className="hero-title">
+          <h1 className="hero-title">
             <Typewriter typingSpeed={50}>
               <span className="code-syntax" style={{ color: "#a3e635" }}>
                 &lt;
@@ -43,7 +48,7 @@ const Home = () => {
             </div>
           </div>
           <div className="hero-cta">
-            <button className="cta-button">
+            <button className="cta-button" onClick={() => navigateTo("blog")}>
               <span className="code-keyword">scroll</span>{" "}
               <span className="code-operator">()</span> {"=>"}{" "}
               <span className="code-string">'explore'</span>
@@ -129,7 +134,10 @@ const Home = () => {
           <span className="section-label">// sections</span>
         </div>
         <div className="features-grid">
-          <div className="feature-card">
+          <div
+            className="feature-card"
+            onClick={() => navigateTo("profile")}
+          >
             <div className="feature-icon">
               <Icon name="profile" size={48} color="#a3e635" />
             </div>
@@ -137,7 +145,10 @@ const Home = () => {
             <p className="feature-desc">// Personal profile and background</p>
             <span className="feature-tag">personal</span>
           </div>
-          <div className="feature-card">
+          <div
+            className="feature-card"
+            onClick={() => navigateTo("timeline")}
+          >
             <div className="feature-icon">
               <Icon name="book" size={48} color="#a3e635" />
             </div>
@@ -147,7 +158,10 @@ const Home = () => {
             </p>
             <span className="feature-tag">preparation</span>
           </div>
-          <div className="feature-card">
+          <div
+            className="feature-card"
+            onClick={() => navigateTo("blog")}
+          >
             <div className="feature-icon">
               <Icon name="blog" size={48} color="#a3e635" />
             </div>
