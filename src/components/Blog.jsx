@@ -892,7 +892,7 @@ const Blog = () => {
     date: "Feb 9 - Feb 13, 2026",
     title: "Network Maintenance and Hardware Troubleshooting",
     tags: ["networking", "maintenance", "troubleshooting", "hardware"],
-    images: ["/week7_1.jpg", "/week7_2.jpg"],
+    images: ["/week7_1.jpg", "/week7_2.jpg", "/week7_3.jpg"],
     content: (
       <pre className="code-pre">
         <span className="code-comment">
