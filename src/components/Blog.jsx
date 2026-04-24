@@ -756,6 +756,73 @@ const Blog = () => {
       based on the needs we've identified so far.`,
   });
 
+  blogPosts.push({
+    id: 6,
+    week: "Week 5",
+    date: "Jan 26 - Jan 30, 2026",
+    title: "Technical Assistance: PNP One Stop Shop Event",
+    tags: ["event", "technical-support", "pnp", "zsppo"],
+    images: ["/week5_1.jpg", "/week5_2.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 5: Technical Assistance for PNP One Stop Shop
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">week5</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">event</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"PNP One Stop Shop"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">role</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Technical Assistants"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">tasks</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Event preparation and setup"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Technical maintenance during event"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Ensuring smooth technical operations"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">recipient</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"ZSPPO"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This week was centered around the PNP One Stop Shop event. We were assigned 
+      as technical assistants to the ZSPPO, supporting them from the initial preparation 
+      phase through to the conclusion of the event. Our primary responsibility was 
+      ensuring that all technical aspects remained functional and that the operations 
+      ran smoothly as various agencies offered their services on the PNP premises. 
+      It was a valuable experience in event-driven technical support and teamwork.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
