@@ -979,6 +979,59 @@ const Blog = () => {
       individual workstation support.`,
   });
 
+  blogPosts.push({
+    id: 9,
+    week: "Week 8",
+    date: "Feb 16 - Feb 20, 2026",
+    title: "System Development and Office Atmosphere",
+    tags: ["development", "systems", "productivity", "pnp"],
+    images: ["/week8_1.jpg", "/week8_2.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 8: Focused System Development Amidst Office Activity
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">week8</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">focus</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Continued System Development"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">environment</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Busy with departmental meetings"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">progress</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Steady development on current modules"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">status</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"productive_isolation"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This week was relatively quiet in terms of external tasks but very 
+      productive for our system development. The office was bustling with various 
+      departmental meetings held right at our workspace, which created a busy 
+      atmosphere. We took this opportunity to double down on our coding tasks, 
+      advancing the development of the systems we've been working on. It was a week 
+      of steady progress and focused implementation.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
