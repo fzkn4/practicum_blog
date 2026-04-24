@@ -823,6 +823,69 @@ const Blog = () => {
       It was a valuable experience in event-driven technical support and teamwork.`,
   });
 
+  blogPosts.push({
+    id: 7,
+    week: "Week 6",
+    date: "Feb 2 - Feb 6, 2026",
+    title: "Design and Preparation: ZSPPO Event Tarpaulin",
+    tags: ["design", "preparation", "tarpaulin", "zsppo"],
+    images: ["/week6_1.jpeg", "/week6_2.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 6: Tarpaulin Design and Preparation for ZSPPO
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">week6</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">task</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Tarpaulin Design"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">client</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"ZSPPO"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">tools</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Graphic design software"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Visual communication principles"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">outcome</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Event tarpaulin ready for printing"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `During this week, we shifted our focus towards graphic design tasks. 
+      We were tasked with designing and preparing a tarpaulin for an upcoming event 
+      organized by the ZSPPO. This involved using design software to create a 
+      visually appealing layout that met the event's requirements. It was a good 
+      opportunity to apply our creative skills and contribute to the organizational 
+      needs of our placement office in a different capacity.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
