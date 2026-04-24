@@ -1103,6 +1103,69 @@ const Blog = () => {
       put in so far.`,
   });
 
+  blogPosts.push({
+    id: 11,
+    week: "Week 10",
+    date: "Mar 2 - Mar 6, 2026",
+    title: "Final Refinements and Wrapping Up",
+    tags: ["finalization", "refinement", "wrap-up", "pnp", "zsppo"],
+    images: ["/week10_1.jpg", "/week10_2.jpg", "/week10_3.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 10: Final System Refinements and Practicum Conclusion
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">finalWeek</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">tasks</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Minor system modifications"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Final feedback implementation"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Documenting and wrapping up projects"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">location</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"ZSPPO"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">status</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"practicum_completed"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This marked our final week at ZSPPO, and it was primarily 
+      dedicated to wrapping things up. We focused on implementing minor 
+      changes and modifications to the systems based on the final rounds 
+      of feedback. It's been a journey of learning and growth, and 
+      spending this time at ZSPPO has been both productive and enjoyable. 
+      As we conclude our practicum, we're proud of the systems we've 
+      developed and the relationships we've built. It's been quite 
+      some fun here, and we're grateful for the experience.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
