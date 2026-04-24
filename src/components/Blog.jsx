@@ -886,6 +886,99 @@ const Blog = () => {
       needs of our placement office in a different capacity.`,
   });
 
+  blogPosts.push({
+    id: 8,
+    week: "Week 7",
+    date: "Feb 9 - Feb 13, 2026",
+    title: "Network Maintenance and Hardware Troubleshooting",
+    tags: ["networking", "maintenance", "troubleshooting", "hardware"],
+    images: ["/week7_1.jpg", "/week7_2.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Week 7: Network Maintenance and Technical Support
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">week7</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">location</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"ZSPPO Premises"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">projects</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">type</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Network Maintenance"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">scope</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"3 Buildings inside ZSPPO"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">objective</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Resolve poor internet connection"</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"}"}</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">type</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Hardware Troubleshooting"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">target</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"OCPD's Office Computer"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"      "}
+        <span className="code-variable">status</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"successfully_fixed"</span>
+        {"\n"}
+        {"    "}
+        <span className="code-bracket">{"}"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This week was physically active, as we assisted PNP personnel with network 
+      maintenance across three different buildings within the ZSPPO premises. The goal 
+      was to address the poor internet connectivity that was hindering office efficiency. 
+      Additionally, I was tasked with troubleshooting a specific issue on the OCPD's 
+      office computer. After diagnosing the problem and applying the necessary fixes, 
+      I successfully restored the computer to full functionality. These hands-on 
+      tasks provided great experience in both infrastructure maintenance and 
+      individual workstation support.`,
+  });
+
   return (
     <div className="blog">
       <section className="blog-cover">
