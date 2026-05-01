@@ -1,23 +1,60 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Typewriter from "./Typewriter";
 
 const Profile = () => {
+  const profileRef = useRef(null);
+
+  useEffect(() => {
+    const root = profileRef.current;
+
+    if (!root) {
+      return undefined;
+    }
+
+    const revealElements = root.querySelectorAll("[data-reveal]");
+
+    if (!revealElements.length) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="profile">
-      <section className="profile-hero">
-        <div className="section-header">
+    <div className="profile" ref={profileRef}>
+      <section className="profile-hero" data-reveal="section">
+        <div className="section-header" data-reveal="fade">
           <span className="section-number">01</span>
           <span className="section-label">// profile</span>
         </div>
-        <div className="profile-header">
-          <div className="profile-avatar">
+        <div className="profile-header" data-reveal="hero">
+          <div className="profile-avatar" data-reveal="stagger">
             <img
               src="/profile_pic.jpg"
               alt="Jhon Anthony B. Tomogsok"
               className="avatar-image"
             />
           </div>
-          <div className="profile-info">
+          <div className="profile-info" data-reveal="stagger">
             <h1 className="profile-name">
               <Typewriter typingSpeed={70}>Jhon Anthony B. Tomogsok</Typewriter>
             </h1>
@@ -61,13 +98,13 @@ const Profile = () => {
       </section>
 
       <section className="profile-content">
-        <div className="content-section">
-          <h2 className="section-title">
+        <div className="content-section" data-reveal="section">
+          <h2 className="section-title" data-reveal="fade">
             <span className="code-keyword">const</span>{" "}
             <span className="code-variable">aboutMe</span> ={" "}
             <span className="code-bracket">{"{"}</span>
           </h2>
-          <div className="code-block-content">
+          <div className="code-block-content" data-reveal="fade">
             <pre className="code-pre">
               <span className="code-bracket">{"{"}</span>
               {"\n"}
@@ -160,14 +197,14 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="content-section">
-          <h2 className="section-title">
+        <div className="content-section" data-reveal="section">
+          <h2 className="section-title" data-reveal="fade">
             <span className="code-keyword">const</span>{" "}
             <span className="code-variable">experience</span> ={" "}
             <span className="code-bracket">[</span>
           </h2>
           <div className="timeline">
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">Freelance Developer</h3>
@@ -197,14 +234,14 @@ const Profile = () => {
           <span className="code-bracket">];</span>
         </div>
 
-        <div className="content-section">
-          <h2 className="section-title">
+        <div className="content-section" data-reveal="section">
+          <h2 className="section-title" data-reveal="fade">
             <span className="code-keyword">const</span>{" "}
             <span className="code-variable">skills</span> ={" "}
             <span className="code-bracket">[</span>
           </h2>
           <div className="skills-grid">
-            <div className="skill-category">
+            <div className="skill-category" data-reveal="stagger">
               <h3 className="skill-category-title">Languages</h3>
               <div className="skill-tags">
                 <span className="skill-tag">Kotlin</span>
@@ -215,7 +252,7 @@ const Profile = () => {
                 <span className="skill-tag">C</span>
               </div>
             </div>
-            <div className="skill-category">
+            <div className="skill-category" data-reveal="stagger">
               <h3 className="skill-category-title">Frameworks & Tools</h3>
               <div className="skill-tags">
                 <span className="skill-tag">React</span>
@@ -226,7 +263,7 @@ const Profile = () => {
                 <span className="skill-tag">Express</span>
               </div>
             </div>
-            <div className="skill-category">
+            <div className="skill-category" data-reveal="stagger">
               <h3 className="skill-category-title">Technologies & Skills</h3>
               <div className="skill-tags">
                 <span className="skill-tag">Cyber Security</span>
@@ -242,14 +279,14 @@ const Profile = () => {
           <span className="code-bracket">];</span>
         </div>
 
-        <div className="content-section">
-          <h2 className="section-title">
+        <div className="content-section" data-reveal="section">
+          <h2 className="section-title" data-reveal="fade">
             <span className="code-keyword">const</span>{" "}
             <span className="code-variable">education</span> ={" "}
             <span className="code-bracket">[</span>
           </h2>
           <div className="timeline">
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">
@@ -262,7 +299,7 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">Senior High School</h3>
@@ -275,7 +312,7 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">High School</h3>
@@ -288,7 +325,7 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">Elementary</h3>
@@ -305,14 +342,14 @@ const Profile = () => {
           <span className="code-bracket">];</span>
         </div>
 
-        <div className="content-section">
-          <h2 className="section-title">
+        <div className="content-section" data-reveal="section">
+          <h2 className="section-title" data-reveal="fade">
             <span className="code-keyword">const</span>{" "}
             <span className="code-variable">achievements</span> ={" "}
             <span className="code-bracket">[</span>
           </h2>
           <div className="timeline">
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">Cyber Exercise PA 2025</h3>
@@ -324,7 +361,7 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">Provincial Hack4Gov 2025</h3>
@@ -336,7 +373,7 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">Regional Hack4Gov 2025</h3>
@@ -348,7 +385,7 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">IT Diagnostic Level 1</h3>
@@ -359,7 +396,7 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="timeline-item">
+            <div className="timeline-item" data-reveal="stagger">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">Level 1 PhilNITS</h3>
