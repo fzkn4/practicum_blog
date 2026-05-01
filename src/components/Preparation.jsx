@@ -22,7 +22,7 @@ const Timeline = () => {
     {
       date: "Year 2",
       title: "Second Year",
-      icon: "code",
+      icon: "bookOpen",
       description:
         "In my second year, I deepened my knowledge of data structures and algorithms, along with other core programming concepts such as object-oriented programming. I also built my first full-stack Java application using JavaFX, MaterialFX, MySQL, and NFC tag reader integration.",
       images: ["/timeline/year2.jpg", "/timeline/year2_2.jpg"],
@@ -37,6 +37,28 @@ const Timeline = () => {
         "/timeline/year3_1.jpg",
         "/timeline/year3_2.jpg",
         "/timeline/year3_3.jpg",
+      ],
+    },
+    {
+      date: "Year 4",
+      title: "Fourth Year",
+      icon: "target",
+      description:
+        "My fourth year has been the most productive stage of my college journey so far. I worked on a wide range of projects and client engagements across web development, desktop applications, and embedded systems, while also successfully defending our emotion detection thesis. I continued competing in capture-the-flag events, including CYBEREX and Hack4Gov at both the provincial and regional levels, and I am scheduled to compete in a national-level military CTF in mid-May 2026. Alongside these milestones, we also successfully deployed four systems at the Zamboanga del Sur Provincial Police Office (ZSPPO).",
+      images: [
+        "/timeline/year4_1.jpg",
+        "/timeline/year4_2.jpg",
+        "/timeline/year4_3.jpg",
+        "/timeline/year4_4.jpg",
+        "/timeline/year4_5.jpg",
+        "/timeline/year4_6.jpeg",
+        "/timeline/year4_7.jpeg",
+        "/timeline/year4_8.jpeg",
+        "/timeline/year4_9.jpeg",
+        "/timeline/year4_10.jpeg",
+        "/timeline/year4_11.jpeg",
+        "/timeline/year4_12.jpg",
+        "/timeline/year4_13.png",
       ],
     },
   ];
