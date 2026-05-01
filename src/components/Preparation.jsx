@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Icon from "./Icon";
 import Typewriter from "./Typewriter";
 
 const Timeline = () => {
+  const timelineRef = useRef(null);
   const [galleryView, setGalleryView] = useState({
     open: false,
     images: [],
@@ -93,14 +94,49 @@ const Timeline = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [galleryView]);
 
+  useEffect(() => {
+    const root = timelineRef.current;
+
+    if (!root) {
+      return undefined;
+    }
+
+    const revealElements = root.querySelectorAll("[data-reveal]");
+
+    if (!revealElements.length) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="timeline">
-      <section className="timeline-hero">
-        <div className="section-header">
+    <div className="timeline" ref={timelineRef}>
+      <section className="timeline-hero" data-reveal="section">
+        <div className="section-header" data-reveal="fade">
           <span className="section-number">02</span>
           <span className="section-label">// timeline</span>
         </div>
-        <h1 className="page-title">
+        <h1 className="page-title" data-reveal="fade">
           <Typewriter>
             <span className="code-keyword">const</span>{" "}
             <span className="code-function">timeline</span>{" "}
@@ -108,16 +144,16 @@ const Timeline = () => {
             <span className="code-bracket">[</span>
           </Typewriter>
         </h1>
-        <p className="page-subtitle">
+        <p className="page-subtitle" data-reveal="fade">
           // A chronological journey through events
         </p>
       </section>
 
-      <section className="timeline-content">
+      <section className="timeline-content" data-reveal="section">
         <div className="timeline-container">
           {timelineItems.length > 0 ? (
             timelineItems.map((item, index) => (
-              <div key={index} className="timeline-item">
+              <div key={index} className="timeline-item" data-reveal="stagger">
                 <div className="timeline-marker">
                   <div className="timeline-dot"></div>
                   {index < timelineItems.length - 1 && (
