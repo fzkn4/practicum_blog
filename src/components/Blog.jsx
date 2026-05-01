@@ -1294,6 +1294,180 @@ const Blog = () => {
       ZSPPO moving forward.`,
   });
 
+  blogPosts.push({
+    id: 13,
+    week: "Seminars",
+    date: "Apr 11",
+    title: "Resume Building and Job Interview Preparation Seminar",
+    tags: ["seminar", "resume", "interview", "career"],
+    images: ["/seminar1.jpg", "/seminar1.2.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Seminar 1: Resume Building and Interview Preparation
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">seminarOne</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">focus</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Preparing for job interviews and strengthening resumes"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">topics</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Interview readiness"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Resume improvement"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Presenting skills effectively"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">date</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Apr 11"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This seminar helped prepare us for future job applications by focusing on interview readiness and resume improvement. It gave practical advice on how to present our strengths better, improve our documents, and approach job opportunities more confidently.`,
+  });
+
+  blogPosts.push({
+    id: 14,
+    week: "Seminars",
+    date: "Apr 17",
+    title: "Workflow Automation Seminar",
+    tags: ["seminar", "automation", "workflow", "n8n"],
+    images: ["/seminar2.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Seminar 2: Workflow Automation and Smart Tools
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">seminarTwo</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">focus</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Workflow automation and productivity tools"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">highlights</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Automation concepts"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Real workflow use cases"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Tools such as n8n"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">date</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Apr 17"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This seminar introduced us to workflow automation and showed how different tools can make processes faster and more efficient. One of the highlighted platforms was n8n, which made the discussion more practical by showing how automation can be applied in real tasks and systems.`,
+  });
+
+  blogPosts.push({
+    id: 15,
+    week: "Seminars",
+    date: "Apr 18",
+    title: "Career Readiness and Workplace Etiquette Seminar",
+    tags: ["seminar", "career", "etiquette", "workplace"],
+    images: ["/seminar3_1.jpg", "/seminar3_2.jpg"],
+    content: (
+      <pre className="code-pre">
+        <span className="code-comment">
+          // Seminar 3: Career Readiness and Workplace Etiquette
+        </span>
+        {"\n"}
+        {"\n"}
+        <span className="code-keyword">const</span>{" "}
+        <span className="code-variable">seminarThree</span>{" "}
+        <span className="code-operator">=</span>{" "}
+        <span className="code-bracket">{"{"}</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">focus</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">
+          "Preparing students for professional environments"
+        </span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">topics</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-bracket">[</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Workplace etiquette and behavior"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Resume preparation"</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"    "}
+        <span className="code-string">"Real-world job scenarios"</span>
+        {"\n"}
+        {"  "}
+        <span className="code-bracket">]</span>
+        <span className="code-operator">,</span>
+        {"\n"}
+        {"  "}
+        <span className="code-variable">date</span>
+        <span className="code-operator">:</span>{" "}
+        <span className="code-string">"Apr 18"</span>
+        {"\n"}
+        <span className="code-bracket">{"}"}</span>
+      </pre>
+    ),
+    reflection: `This seminar focused on helping us become more prepared for real jobs by discussing workplace etiquette, expected professional behavior, resume preparation, and different real-world scenarios. It was a useful session for understanding how to carry ourselves well once we step into an actual working environment.`,
+  });
+
   return (
     <div className="blog" ref={blogRef}>
       <section className="blog-cover">
