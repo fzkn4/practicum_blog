@@ -74,9 +74,17 @@ const Typewriter = ({
       }, pauseDuration);
     } else if (phase === "DELETING") {
       if (visibleCount > 0) {
+        // Determine the next delay based on whether we're hitting a boundary
+        const currentText = fullTextContent.slice(0, visibleCount);
+        const charToRemove = currentText[currentText.length - 1];
+        const isBoundary = /[\s.\[\](){}=>,:;_-]/.test(charToRemove);
+        
+        // Bursts of speed for characters, pauses for word boundaries
+        const nextDelay = isBoundary ? 200 : 30;
+
         timerRef.current = setTimeout(() => {
           setVisibleCount((prev) => prev - 1);
-        }, deletingSpeed);
+        }, nextDelay);
       } else {
         if (words && words.length > 0) {
           setWordIndex((prev) => (prev + 1) % words.length);
@@ -102,8 +110,18 @@ const Typewriter = ({
       const text = node.toString();
       const remaining = visibleCount - state.count;
       const toShow = text.slice(0, remaining);
+      
+      const result = toShow.split("").map((char, i) => {
+        const charIndex = state.count + i;
+        return (
+          <span key={charIndex} className="typewriter-char">
+            {char}
+          </span>
+        );
+      });
+      
       state.count += toShow.length;
-      return toShow;
+      return result;
     }
 
     if (Array.isArray(node)) {
@@ -127,7 +145,11 @@ const Typewriter = ({
   return (
     <span className="typewriter-wrapper">
       {words && words.length > 0 ? (
-        fullTextContent.slice(0, visibleCount)
+        fullTextContent.slice(0, visibleCount).split("").map((char, i) => (
+          <span key={i} className="typewriter-char">
+            {char}
+          </span>
+        ))
       ) : (
         renderChildren(children, state)
       )}
@@ -135,7 +157,7 @@ const Typewriter = ({
         className="typewriter-cursor"
         aria-hidden="true"
       >
-        _
+        &nbsp;
       </span>
     </span>
   );

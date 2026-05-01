@@ -10,8 +10,8 @@ const Blog = () => {
   });
   const [showAllImages, setShowAllImages] = useState({});
 
-  // Calculate weeks from Nov 24, 2025 to present
-  const startDate = new Date("2025-12-08");
+  // Calculate weeks from Jan 5, 2026 to present
+  const startDate = new Date("2026-01-05");
   const currentDate = new Date();
   const daysSinceStart = Math.max(
     0,

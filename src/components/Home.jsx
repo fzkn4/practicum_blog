@@ -20,15 +20,15 @@ const Home = ({ onNavigate }) => {
             <span className="code-bracket">{"{"}</span>
           </div>
           <h1 className="hero-title">
+            <span className="code-syntax" style={{ color: "#a3e635" }}>
+              &lt;
+            </span>
             <Typewriter typingSpeed={50}>
-              <span className="code-syntax" style={{ color: "#a3e635" }}>
-                &lt;
-              </span>
               <span className="title-main">practicum.blog</span>
-              <span className="code-syntax" style={{ color: "#a3e635" }}>
-                /&gt;
-              </span>
             </Typewriter>
+            <span className="code-syntax" style={{ color: "#a3e635" }}>
+              /&gt;
+            </span>
           </h1>
           <p className="hero-subtitle">
             // Building skills, documenting growth, one commit at a time
@@ -39,7 +39,7 @@ const Home = ({ onNavigate }) => {
               <span className="stat-label">weeks</span>
             </div>
             <div className="stat-item">
-              <span className="stat-value">Dec 8</span>
+              <span className="stat-value">Jan 5</span>
               <span className="stat-label">started</span>
             </div>
             <div className="stat-item">
@@ -77,7 +77,7 @@ const Home = ({ onNavigate }) => {
                 * @author Jhon Anthony B. Tomogsok
               </span>
               {"\n"}
-              <span className="code-comment"> * @since 12-8-2025</span>
+              <span className="code-comment"> * @since 1-5-2026</span>
               {"\n"}
               <span className="code-comment"> */</span>
               {"\n"}
