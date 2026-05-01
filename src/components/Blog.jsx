@@ -40,7 +40,7 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      week: "Week 1",
+      week: "Preparation",
       date: getWeekDateRange(1),
       title: "CCS Practicum: Workshop Etiquette on Office and Workplace",
       tags: ["workshop", "etiquette", "professionalism", "practicum"],
@@ -196,7 +196,7 @@ const Blog = () => {
     },
     {
       id: 2,
-      week: "Week 1",
+      week: "Preparation",
       date: getWeekDateRange(1),
       title: "OJT Application & Preparation",
       tags: ["ojt", "application", "preparation"],
@@ -368,7 +368,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 3,
-    week: "Week 2",
+    week: "Week 1",
     date: "Jan 5 - Jan 9, 2026",
     title: "Building Three Essential Systems for PICTMU",
     tags: ["development", "systems", "pnp", "productivity"],
@@ -623,7 +623,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 4,
-    week: "Week 3",
+    week: "Week 2",
     date: "Jan 12 - Jan 16, 2026",
     title: "Proposal for a Centralized e-document system",
     tags: ["proposal", "e-document", "automation", "workflow"],
@@ -714,7 +714,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 5,
-    week: "Week 4",
+    week: "Week 3",
     date: "Jan 19 - Jan 23, 2026",
     title: "Technical Support and Continued Development",
     tags: ["troubleshooting", "systems", "development", "pnp"],
@@ -775,7 +775,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 6,
-    week: "Week 5",
+    week: "Week 4",
     date: "Jan 26 - Jan 30, 2026",
     title: "Technical Assistance: PNP One Stop Shop Event",
     tags: ["event", "technical-support", "pnp", "zsppo"],
@@ -842,7 +842,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 7,
-    week: "Week 6",
+    week: "Week 5",
     date: "Feb 2 - Feb 6, 2026",
     title: "Design and Preparation: ZSPPO Event Tarpaulin",
     tags: ["design", "preparation", "tarpaulin", "zsppo"],
@@ -905,7 +905,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 8,
-    week: "Week 7",
+    week: "Week 6",
     date: "Feb 9 - Feb 13, 2026",
     title: "Network Maintenance and Hardware Troubleshooting",
     tags: ["networking", "maintenance", "troubleshooting", "hardware"],
@@ -998,7 +998,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 9,
-    week: "Week 8",
+    week: "Week 7",
     date: "Feb 16 - Feb 20, 2026",
     title: "System Development and Office Atmosphere",
     tags: ["development", "systems", "productivity", "pnp"],
@@ -1051,7 +1051,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 10,
-    week: "Week 9",
+    week: "Week 8",
     date: "Feb 23 - Feb 27, 2026",
     title: "System Presentation and Community Building",
     tags: ["presentation", "demo", "feedback", "pnp", "community"],
@@ -1122,7 +1122,7 @@ const Blog = () => {
 
   blogPosts.push({
     id: 11,
-    week: "Week 10",
+    week: "Week 9",
     date: "Mar 2 - Mar 6, 2026",
     title: "Final Refinements and Wrapping Up",
     tags: ["finalization", "refinement", "wrap-up", "pnp", "zsppo"],
