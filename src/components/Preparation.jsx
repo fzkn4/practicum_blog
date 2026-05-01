@@ -27,6 +27,18 @@ const Timeline = () => {
         "In my second year, I deepened my knowledge of data structures and algorithms, along with other core programming concepts such as object-oriented programming. I also built my first full-stack Java application using JavaFX, MaterialFX, MySQL, and NFC tag reader integration.",
       images: ["/timeline/year2.jpg", "/timeline/year2_2.jpg"],
     },
+    {
+      date: "Year 3",
+      title: "Third Year",
+      icon: "target",
+      description:
+        "My third year was focused on sharpening my technical skills through consistent practice, competition, and research. We developed our emotion detection thesis proposal and successfully had it approved, while also earning a win in programming at HIMUGSO. During this year, I also started joining capture-the-flag events in both online and in-person settings, and took part in Hack4Gov, which pushed me to apply my problem-solving, cybersecurity, and teamwork skills in more demanding environments.",
+      images: [
+        "/timeline/year3_1.jpg",
+        "/timeline/year3_2.jpg",
+        "/timeline/year3_3.jpg",
+      ],
+    },
   ];
 
   // Keyboard navigation for gallery
