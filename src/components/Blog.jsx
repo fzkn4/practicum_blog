@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Typewriter from "./Typewriter";
 
 const Blog = () => {
+  const blogRef = useRef(null);
   const [selectedPost, setSelectedPost] = useState(null);
   const [galleryView, setGalleryView] = useState({
     open: false,
@@ -365,6 +366,41 @@ const Blog = () => {
       document.body.style.overflow = "";
     };
   }, [selectedPost, galleryView.open]);
+
+  useEffect(() => {
+    const root = blogRef.current;
+
+    if (!root) {
+      return undefined;
+    }
+
+    const revealElements = root.querySelectorAll("[data-reveal]");
+
+    if (!revealElements.length) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   blogPosts.push({
     id: 3,
@@ -1259,16 +1295,16 @@ const Blog = () => {
   });
 
   return (
-    <div className="blog">
+    <div className="blog" ref={blogRef}>
       <section className="blog-cover">
         <img src="/cover.jpg" alt="Blog Cover" className="cover-image" />
       </section>
-      <section className="blog-hero">
-        <div className="section-header">
+      <section className="blog-hero" data-reveal="section">
+        <div className="section-header" data-reveal="fade">
           <span className="section-number">03</span>
           <span className="section-label">// blog</span>
         </div>
-        <h1 className="page-title">
+        <h1 className="page-title" data-reveal="fade">
           <Typewriter>
             <span className="code-keyword">export</span>{" "}
             <span className="code-keyword">const</span>{" "}
@@ -1276,28 +1312,32 @@ const Blog = () => {
             <span className="code-bracket">[</span>
           </Typewriter>
         </h1>
-        <p className="page-subtitle">
+        <p className="page-subtitle" data-reveal="fade">
           // Weekly reflections and learnings from the practicum
         </p>
-        <div className="blog-stats">
-          <div className="stat-item">
+        <div className="blog-stats" data-reveal="fade">
+          <div className="stat-item" data-reveal="stagger">
             <span className="stat-value">10</span>
             <span className="stat-label">weeks</span>
           </div>
-          <div className="stat-item">
+          <div className="stat-item" data-reveal="stagger">
             <span className="stat-value">{blogPosts.length}</span>
             <span className="stat-label">posts</span>
           </div>
-          <div className="stat-item">
+          <div className="stat-item" data-reveal="stagger">
             <span className="stat-value">Done</span>
             <span className="stat-label">status</span>
           </div>
         </div>
       </section>
 
-      <section className="blog-content">
+      <section className="blog-content" data-reveal="section">
         {/* Progress Bar */}
-        <div className="level-progress" aria-label="OJT progress: 10 of 10 levels completed">
+        <div
+          className="level-progress"
+          data-reveal="fade"
+          aria-label="OJT progress: 10 of 10 levels completed"
+        >
           {Array.from({ length: 10 }, (_, i) => (
             <div key={i} className="progress-segment" />
           ))}
@@ -1314,6 +1354,7 @@ const Blog = () => {
               <div
                 key={post.id}
                 className={`level-row ${isLeft ? "level-row--left" : "level-row--right"}`}
+                data-reveal="stagger"
               >
                 {/* Card area */}
                 <div className="level-card-area">
@@ -1379,7 +1420,7 @@ const Blog = () => {
           })}
 
           {/* ===== Finish Line ===== */}
-          <div className="finish-line">
+          <div className="finish-line" data-reveal="fade">
             <div className="finish-line-track">
               <div className="finish-checker" />
               <div className="finish-checker" />
@@ -1411,8 +1452,8 @@ const Blog = () => {
         </div>
       </section>
 
-      <section className="blog-footer">
-        <div className="code-block-large">
+      <section className="blog-footer" data-reveal="section">
+        <div className="code-block-large" data-reveal="fade">
           <pre className="code-pre">
             <span className="code-comment">// OJT Journey completed successfully</span>
             {"\n"}
